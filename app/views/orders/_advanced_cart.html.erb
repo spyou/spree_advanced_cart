@@ -20,24 +20,24 @@
         <% end %>
 
       <% end %>
-      <div class="right-links">
-              <%= link_to "Update cart", '#', :class => 'button checkout primary', :onclick => "$('form#updatecart').submit(); return false;" %>
+    </div>
+        <div class="right-links">
+                <%= link_to "Update cart", '#', :class => 'button checkout primary', :onclick => "$('form#updatecart').submit(); return false;" %>
 
               <%= link_to "Continue to checkout", checkout_path, :class => 'button checkout primary' %>
 
-
-
+            <div class="quote-links">
+              <h4>or</h4>
+              <%= link_to "Email me a quote", new_quote_path, :class => 'button quote primary', :id => 'quote-link' %>
             </div>
-          </div>
+
+
+        </div>
+
 
       <div class="left-links">
         <%= link_to 'Continue shopping', products_path, :class => 'button checkout primary' %>
 
-      </div>
-      <div class="quote-links">
-        <h4>or</h4>
-
-          <%= link_to "Email me a quote", new_quote_path, :class => 'button quote primary', :id => 'quote-link' %>
       </div>
     </div>
 
