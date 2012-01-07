@@ -5,30 +5,27 @@
       <%= render :partial => 'form', :locals => {:order_form => order_form} %>
     <% end %>
 
-    <% if Spree::AdvancedCart::Config[:enable_coupon_applying] %>
-      <table id="order-charges">
-        <tbody>
-          <% @order.adjustments.each do |adjustment| %>
-            <tr>
-              <td><strong><%= adjustment.label %></strong></td>
-              <td class="total"><span><%= number_to_currency adjustment.amount %></span></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-
-    <% end %>
-
     <div id="subtotal">
       <%= hook :advanced_cart_subtotal do %>
-        <h3><%= "#{t("subtotal")}: #{order_price(@order)}" %></h3>
-        <% if Spree::AdvancedCart::Config[:enable_coupon_applying] %>
+        <h3><%= "#{t("subtotal")}: #{number_to_currency @order.item_total}" %></h3>
+
+				<% if Spree::AdvancedCart::Config[:enable_coupon_applying] %>
+					<% @order.adjustments.each do |adjustment| %>
+						<h4><%= "#{adjustment.label}: #{number_to_currency adjustment.amount}" %></h4>
+		      <% end %>
+		    <% end %>
+
+        <% if Spree::AdvancedCart::Config[:enable_coupon_applying] && ["payment", "confirm", "complete"].include?(@order.state) %>
           <h3><%= "#{t("total")}: #{number_to_currency @order.total}" %></h3>
         <% end %>
+
       <% end %>
       <%= hook :advanced_cart_subtotal_links do %>
       <div class="links">
         <%= link_to image_tag('/images/update.png') + t("update"), '#', :class => 'button checkout primary', :onclick => "$('form#updatecart').submit(); return false;" %>
+
+				<%= link_to image_tag('/images/quote.png') + t(:get_quote), new_quote_path, :class => 'button quote primary', :id => 'quote-link' %>
+
         <%= link_to image_tag('/images/checkout.png') + t("checkout"), checkout_path, :class => 'button checkout primary' %>
       </div>
       <% end %>
