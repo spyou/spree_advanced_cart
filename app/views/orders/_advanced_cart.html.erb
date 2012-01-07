@@ -11,7 +11,7 @@
 
 				<% if Spree::AdvancedCart::Config[:enable_coupon_applying] %>
 					<% @order.adjustments.each do |adjustment| %>
-						<h3><%= "#{adjustment.label}: #{number_to_currency adjustment.amount}" %></h3>
+						<h4><%= "#{adjustment.label}: #{number_to_currency adjustment.amount}" %></h4>
 		      <% end %>
 		    <% end %>
 
