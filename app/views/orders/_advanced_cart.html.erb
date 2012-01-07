@@ -20,15 +20,25 @@
         <% end %>
 
       <% end %>
-      <%= hook :advanced_cart_subtotal_links do %>
-      <div class="links">
-        <%= link_to image_tag('/images/update.png') + t("update"), '#', :class => 'button checkout primary', :onclick => "$('form#updatecart').submit(); return false;" %>
+      <div class="right-links">
+              <%= link_to "Update cart", '#', :class => 'button checkout primary', :onclick => "$('form#updatecart').submit(); return false;" %>
 
-				<%= link_to image_tag('/images/quote.png') + t(:get_quote), new_quote_path, :class => 'button quote primary', :id => 'quote-link' %>
+              <%= link_to "Continue to checkout", checkout_path, :class => 'button checkout primary' %>
 
-        <%= link_to image_tag('/images/checkout.png') + t("checkout"), checkout_path, :class => 'button checkout primary' %>
+
+
+            </div>
+          </div>
+
+      <div class="left-links">
+        <%= link_to 'Continue shopping', products_path, :class => 'button checkout primary' %>
+
       </div>
-      <% end %>
+      <div class="quote-links">
+        <h4>or</h4>
+
+          <%= link_to "Email me a quote", new_quote_path, :class => 'button quote primary', :id => 'quote-link' %>
+      </div>
     </div>
 
   <% end %>
