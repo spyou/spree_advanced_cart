@@ -1,8 +1,8 @@
-#updatecart #order-charges td {
+#update-cart #order-charges td {
   text-align: right;
 }
 
-#updatecart #order-charges td.total {
+#update-cart #order-charges td.total {
   text-align: left;
   width: 115px;
 }
