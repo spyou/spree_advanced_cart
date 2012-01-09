@@ -22,7 +22,7 @@
       <% end %>
     </div>
         <div class="right-links">
-                <%= link_to "Update cart", '#', :class => 'button update primary', :onclick => "$('form#updatecart').submit(); return false;" %>
+          <%= link_to "Update cart", '#', :class => 'button update primary', :id => "update-cart" :onclick => "$('form#update-cart').submit(); return false;" %>
 
               <%= link_to "Continue to checkout", checkout_path, :class => 'button checkout primary' %>
 
