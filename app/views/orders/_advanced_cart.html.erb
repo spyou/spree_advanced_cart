@@ -17,7 +17,7 @@
       <%= hook :advanced_cart_subtotal do %>
         <h3><%= "#{t("subtotal")}: #{number_to_currency @order.item_total}" %></h3>
 
-					<% @order.adjustments.each do |adjustment| %>
+					<% @order.adjustments.eligible.each do |adjustment| %>
 						<h4><%= "#{adjustment.label}: #{number_to_currency adjustment.amount}" %></h4>
 		      <% end %>
 
